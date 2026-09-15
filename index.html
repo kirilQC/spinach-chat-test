@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spinach Chat Test</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: -apple-system, system-ui, sans-serif; max-width: 640px; margin: 8vh auto; padding: 0 16px; line-height: 1.5; }
+    h1 { font-size: 1.4rem; }
+    .card { border: 1px solid #8884; border-radius: 10px; padding: 16px 20px; margin-top: 16px; }
+    code { background: #8882; padding: 1px 5px; border-radius: 4px; }
+    #status { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Spinach.ai Support Chat Test</h1>
+  <p>Prototype page for testing the Plain chat widget and the Popeye AI agent outside of app.plain.com.</p>
+  <div class="card">
+    <p>Widget status: <span id="status">loading...</span></p>
+    <p>The chat bubble should appear in the bottom-right corner. Test questions:</p>
+    <ul>
+      <li>How much does Spinach cost?</li>
+      <li>Why didn't I get a meeting summary?</li>
+      <li>How do I connect Spinach to Slack?</li>
+    </ul>
+  </div>
+
+  <script>
+    (function(d, script) {
+      script = d.createElement('script');
+      script.async = false;
+      script.onload = function(){
+        Plain.init({
+          appId: 'liveChatApp_01M2KDV42Y2RT42K1B68SJTNZQ',
+        });
+        document.getElementById('status').textContent = 'Plain widget initialized';
+      };
+      script.onerror = function(){
+        document.getElementById('status').textContent = 'failed to load chat.cdn-plain.com';
+      };
+      script.src = 'https://chat.cdn-plain.com/index.js';
+      d.getElementsByTagName('head')[0].appendChild(script);
+    }(document));
+  </script>
+</body>
+</html>
